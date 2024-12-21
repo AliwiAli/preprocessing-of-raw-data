@@ -127,7 +127,7 @@ plt.show()
 
 # Recursive Feature Elimination
 model = RandomForestClassifier(random_state=42)
-rfe = RFE(model, n_features_to_select=30)
+rfe = RFE(model, n_features_to_select=20)
 rfe.fit(X, y)
 selected_features = X.columns[rfe.support_]
 print("Selected Features by RFE:", selected_features.tolist())
@@ -135,7 +135,11 @@ print("Selected Features by RFE:", selected_features.tolist())
 # Final feature set
 final_features = list(set(selected_features) | set(mi_scores.head(20).index))
 X = X[final_features]
-print(X.columns, "\n")
+
+print("Data Frame Shape: ", df.shape, "\n")
+print("Number of Features Selected after feature selection:", X.shape)
+print("Remining Features in X: ", X.columns, "\n")
+
 
 # Step 12: Train-validation split
 X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, stratify=y, random_state=42)
