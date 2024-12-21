@@ -137,7 +137,7 @@ final_features = list(set(selected_features) | set(mi_scores.head(20).index))
 X = X[final_features]
 
 print("Data Frame Shape: ", df.shape, "\n")
-print("Number of Features Selected after feature selection:", X.shape)
+print("Number of Features Remaining after feature selection:", X.shape)
 print("Remining Features in X: ", X.columns, "\n")
 
 
